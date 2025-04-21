@@ -1,5 +1,9 @@
+from starlette.applications import Starlette
+from starlette.routing import Route
+from starlette.responses import JSONResponse
+
 ## app function from scratch handling the request and response
-async def app(scope, _receive, send):
+async def app_from_scratch(scope, _receive, send):
     assert scope["type"] == "http"
 
     await send(
@@ -18,6 +22,13 @@ async def app(scope, _receive, send):
             "body": b"Hello, world from scratch!",
         }
     )
+
+
+## app with starlette
+async def starlette_route(_request):
+    return JSONResponse({'output': 'Hello, world from starlette!'})
+
+app_from_starlette = Starlette(routes=[Route("/", starlette_route)])
 
 ## invalid app, does not handle the request and response
 async def invalid_app():
