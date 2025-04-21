@@ -34,15 +34,41 @@ uvicorn main:app_from_fastapi
 
 ## Requirements
 
-- Python 3.7+
+- Python >=3.13,<4.0
 - Uvicorn
 - Starlette
 - FastAPI
 
 ## Installation
 
+###  Virtualenv to isolate installation
+
+```bash
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+### Using pip
+
 ```bash
 pip install uvicorn starlette fastapi
+```
+
+
+### Using Poetry
+
+```bash
+# Install Poetry if you haven't already
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Install dependencies
+poetry install
+
+# Activate the virtual environment
+poetry shell
 ```
 
 ## Purpose
